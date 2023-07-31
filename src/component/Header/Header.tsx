@@ -15,8 +15,8 @@ import {
 import { useAuthContext } from '@src/feature/auth/provider/AuthProvider'
 import { FirebaseError } from '@firebase/util'
 import { getAuth, signOut } from 'firebase/auth'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { Navigate } from '@src/component/Navigate/Navigate'
+import { useRouter } from '@src/hooks/useRouter/useRouter'
 
 export const Header = () => {
   const { user } = useAuthContext()
@@ -32,7 +32,7 @@ export const Header = () => {
         status: 'success',
         position: 'top',
       })
-      push('/signin')
+      push((path) => path.signin.$url())
     } catch (e) {
       if (e instanceof FirebaseError) {
         console.log(e)
@@ -41,33 +41,31 @@ export const Header = () => {
   }
 
   return (
-      <chakra.header py={4} bgColor={'blue.600'}>
-        <Container maxW={'container.lg'}>
-          <Flex>
-              <chakra.a
-                  _hover={{
-                    opacity: 0.8,
-                  }}
-              >
-                <Heading color={'white'}>Firebase Realtime Chat</Heading>
-              </chakra.a>
-            <Spacer aria-hidden />
-            {user ? (
-                <Menu>
-                  <MenuButton>
-                    <Avatar flexShrink={0} width={10} height={10} />
-                  </MenuButton>
-                  <MenuList py={0}>
-                    <MenuItem onClick={handleSignOut}>サインアウト</MenuItem>
-                  </MenuList>
-                </Menu>
-            ) : (
-                  <Button as={'a'} colorScheme={'teal'} href={"/signin"}>
-                    サインイン
-                  </Button>
-            )}
-          </Flex>
-        </Container>
-      </chakra.header>
+    <chakra.header py={4} bgColor={'blue.600'}>
+      <Container maxW={'container.lg'}>
+        <Flex>
+          <Heading color={'white'}>Firebase Realtime Chat</Heading>
+          <Spacer aria-hidden />
+          {user ? (
+            <Menu>
+              <MenuButton>
+                <Avatar flexShrink={0} width={10} height={10} />
+              </MenuButton>
+              <MenuList py={0}>
+                <MenuItem onClick={handleSignOut}>サインアウト</MenuItem>
+              </MenuList>
+            </Menu>
+          ) : (
+            <Button
+              as={'a'}
+              colorScheme={'teal'}
+              href={(path) => path.signin.$url()}
+            >
+              サインイン
+            </Button>
+          )}
+        </Flex>
+      </Container>
+    </chakra.header>
   )
 }
