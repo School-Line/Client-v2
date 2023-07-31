@@ -75,7 +75,7 @@ export const Page = () => {
   return (
     <Container py={14}>
       <Spacer height={4} aria-hidden />
-      <Flex flexDirection={'column'} overflowY={'auto'} gap={2} height={640}>
+      <Flex flexDirection={'column'} overflowY={'auto'} gap={2} height={400}>
         {chats.map((chat, index) => (
           <Message message={chat.message} key={`ChatMessage_${index}`} />
         ))}
