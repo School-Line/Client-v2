@@ -39,7 +39,9 @@ export const Page = () => {
   const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (message === "") return;
+    if (message === '') return;
+    if (message.match(/^\s+?$/)) return;
+
     try {
       const db = getDatabase()
       const dbRef = ref(db, 'chat')
@@ -81,21 +83,26 @@ export const Page = () => {
 
   return (
     <AuthGuard>
-      <Container py={14}>
-        <Heading>チャット</Heading>
-        <Spacer height={4} aria-hidden />
+      <Container
+        py={14}
+        flex={1}
+        display={'flex'}
+        flexDirection={'column'}
+        minHeight={0}
+      >
+        <Spacer flex={'none'} height={4} aria-hidden />
         <Flex
           flexDirection={'column'}
           overflowY={'auto'}
           gap={2}
-          height={400}
           ref={messagesElementRef}
         >
           {chats.map((chat, index) => (
             <Message message={chat.message} key={`ChatMessage_${index}`} />
           ))}
         </Flex>
-        <Spacer height={2} aria-hidden />
+        <Spacer aria-hidden />
+        <Spacer height={2} aria-hidden flex={'none'} />
         <chakra.form display={'flex'} gap={2} onSubmit={handleSendMessage}>
           <Input value={message} onChange={(e) => setMessage(e.target.value)} />
           <Button type={'submit'}>送信</Button>

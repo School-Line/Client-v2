@@ -1,8 +1,15 @@
-import type { NextPage } from 'next'
-import { Heading } from '@chakra-ui/react'
+import React from 'react'
+import { useRouter } from 'next/router'
+import { NextPage } from "next";
 
 const Page: NextPage = () => {
-  return <Heading>Chakra UI</Heading>
+  const router = useRouter()
+
+  React.useEffect(() => {
+    if (router.asPath === '/') {
+      router.push('/chat')
+    }
+  }, [router.asPath])
 }
 
 export default Page

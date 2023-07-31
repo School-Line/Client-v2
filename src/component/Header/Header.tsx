@@ -44,7 +44,15 @@ export const Header = () => {
     <chakra.header py={4} bgColor={'blue.600'}>
       <Container maxW={'container.lg'}>
         <Flex>
-          <Heading color={'white'}>Firebase Realtime Chat</Heading>
+          <Navigate href={(path) => path.$url()}>
+            <chakra.a
+              _hover={{
+                opacity: 0.8,
+              }}
+            >
+              <Heading color={'white'}>SC LINE</Heading>
+            </chakra.a>
+          </Navigate>
           <Spacer aria-hidden />
           {user ? (
             <Menu>
@@ -56,13 +64,11 @@ export const Header = () => {
               </MenuList>
             </Menu>
           ) : (
-            <Button
-              as={'a'}
-              colorScheme={'teal'}
-              href={(path) => path.signin.$url()}
-            >
-              サインイン
-            </Button>
+            <Navigate href={(path) => path.signin.$url()}>
+              <Button as={'a'} colorScheme={'teal'}>
+                サインイン
+              </Button>
+            </Navigate>
           )}
         </Flex>
       </Container>

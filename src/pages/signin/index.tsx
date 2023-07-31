@@ -85,6 +85,12 @@ export const Page = () => {
         </Grid>
         <Spacer height={4} aria-hidden />
         <Center>
+          <chakra.p>
+            アカウントがありませんか？アカウントを<chakra.a href={"/signup"} color={"blue"}>新規作成</chakra.a>してください
+          </chakra.p>
+        </Center>
+        <Spacer height={4} aria-hidden />
+        <Center>
           <Button type={'submit'} isLoading={isLoading}>
             ログイン
           </Button>
