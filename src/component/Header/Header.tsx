@@ -17,6 +17,7 @@ import { FirebaseError } from '@firebase/util'
 import { getAuth, signOut } from 'firebase/auth'
 import { Navigate } from '@src/component/Navigate/Navigate'
 import { useRouter } from '@src/hooks/useRouter/useRouter'
+import Image from 'next/image'
 
 export const Header = () => {
   const { user } = useAuthContext()
@@ -57,10 +58,20 @@ export const Header = () => {
           {user ? (
             <Menu>
               <MenuButton>
-                <Avatar flexShrink={0} width={10} height={10} />
+                <Image
+                  src={
+                    'https://cdn.discordapp.com/avatars/1004365048887660655/23f7c312ade4bd6be2740f2c84791dc1.webp'
+                  }
+                  alt={'avatar'}
+                  width={48}
+                  height={48}
+                ></Image>
               </MenuButton>
               <MenuList py={0}>
-                <MenuItem onClick={handleSignOut}>サインアウト</MenuItem>
+                <MenuItem>アカウント設定</MenuItem>
+                <MenuItem onClick={handleSignOut} color={'red'}>
+                  サインアウト
+                </MenuItem>
               </MenuList>
             </Menu>
           ) : (

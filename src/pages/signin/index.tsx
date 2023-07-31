@@ -86,7 +86,11 @@ export const Page = () => {
         <Spacer height={4} aria-hidden />
         <Center>
           <chakra.p>
-            アカウントがありませんか？アカウントを<chakra.a href={"/signup"} color={"blue"}>新規作成</chakra.a>してください
+            アカウントがありませんか？アカウントを
+            <chakra.a href={'/signup'} color={'blue'}>
+              新規作成
+            </chakra.a>
+            してください
           </chakra.p>
         </Center>
         <Spacer height={4} aria-hidden />

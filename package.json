@@ -29,6 +29,7 @@
     "eslint-config-next": "13.4.12",
     "firebase": "^10.1.0",
     "framer-motion": "^10.15.0",
+    "mongoose": "^7.4.1",
     "next": "13.4.12",
     "pathpida": "^0.21.0",
     "react": "18.2.0",

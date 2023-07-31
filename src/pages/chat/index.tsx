@@ -39,8 +39,8 @@ export const Page = () => {
   const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (message === '') return;
-    if (message.match(/^\s+?$/)) return;
+    if (message === '') return
+    if (message.match(/^\s+?$/)) return
 
     try {
       const db = getDatabase()

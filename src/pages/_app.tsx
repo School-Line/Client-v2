@@ -4,8 +4,8 @@ import { initializeFirebaseApp } from '@src/lib/firebase/firebase'
 import { AuthProvider } from '@src/feature/auth/provider/AuthProvider'
 import { Header } from '@src/component/Header/Header'
 import { theme } from '@src/lib/chakra/theme'
-import { useRouter } from "next/router";
-import React from "react";
+import { useRouter } from 'next/router'
+import React from 'react'
 
 initializeFirebaseApp()
 function MyApp({ Component, pageProps }: AppProps) {
